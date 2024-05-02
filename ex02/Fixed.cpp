@@ -6,7 +6,7 @@
 /*   By: struf <struf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 15:03:59 by struf             #+#    #+#             */
-/*   Updated: 2024/05/02 16:13:24 by struf            ###   ########.fr       */
+/*   Updated: 2024/05/02 16:36:26 by struf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,8 @@ Fixed::Fixed() : _value(0) {
     std::cout << "Default constructor called\n";
 }
 
-Fixed::Fixed(const Fixed &other) {
+Fixed::Fixed(const Fixed &other) : _value(other._value) {
     std::cout << "Copy constructor called\n";
-    *this = other;
 }
 
 Fixed::~Fixed() {
@@ -28,7 +27,7 @@ Fixed::~Fixed() {
 }
 
 Fixed &Fixed::operator=(const Fixed &other) {
-    std::cout << "Assignation operator called\n";
+    std::cout << "Copy assignation operator called\n";
     if (this != &other) {
         this->_value = other._value;
     }
@@ -42,4 +41,26 @@ int Fixed::getRawBits() const {
 
 void Fixed::setRawBits(int const raw) {
     this->_value = raw;
+}
+
+Fixed::Fixed(const int value) : _value(value << _fractBits) {
+    std::cout << "Int constructor called\n";
+}
+
+Fixed::Fixed(const float value) : _value(roundf(value * (1 << _fractBits))) {
+    std::cout << "Float constructor called\n";
+}
+
+int Fixed::toInt() const {
+    return _value >> _fractBits;
+}
+
+float Fixed::toFloat() const {
+    return static_cast<float>(_value) / (1 << _fractBits);
+}
+
+
+std::ostream &operator<<(std::ostream &out, const Fixed &fixed) {
+    out << fixed.toFloat();
+    return out;
 }

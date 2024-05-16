@@ -9,7 +9,7 @@ int main( void ) {
     std::cout << b.getRawBits() << std::endl;
     std::cout << c.getRawBits() << std::endl;
 
-    std::cout << "More tests" << std::endl;
+    /*std::cout << "More tests" << std::endl;
     a.setRawBits(1234);
     b.setRawBits(5678);
 
@@ -22,7 +22,7 @@ int main( void ) {
     std::cout << "After assignment:" << std::endl;
     std::cout << "a: " << a.getRawBits() << std::endl;
     std::cout << "b: " << b.getRawBits() << std::endl;
-    std::cout << "c: " << c.getRawBits() << std::endl;
+    std::cout << "c: " << c.getRawBits() << std::endl;*/
 
     return 0;
 }

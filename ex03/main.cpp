@@ -1,15 +1,20 @@
-#include <Fixed.hpp>
-#include <Point.hpp>
+#include "Point.hpp"
 
-// int main( void ) {
-//     Point P = {Fixed(2), Fixed(2)}; // Point to check
-//     Triangle ABC = {{Fixed(0), Fixed(0)}, {Fixed(4), Fixed(0)}, {Fixed(2), Fixed(4)}}; // Triangle vertices
+int main() {
+    const Point a(0, 0);
+    const Point b(5.15646f, 0);
+    const Point c(0, 5);
+    const Point point(1, 1);
 
-//     bool inside = isInsideTriangle(P, ABC);
-//     if (inside) {
-//         std::cout << "Point is inside the triangle.\n";
-//     } else {
-//         std::cout << "Point is outside the triangle.\n";
-//     }
-//     return 0;
-// }
+    // std::cout << "The point( x= " << point.getX() << "\ty= " << point.getY() << ")\n" <<
+	// "\ta( x= " << a.getX() << "\ty= " << a.getY() << ")\n" <<
+	// "\tb( x= " << b.getX() << "\ty= " << b.getY() << ")\n" <<
+	// "\tc( x= " << c.getX() << "\ty= " << c.getY() << ")\n" << std::endl;
+
+    if (bsp(a, b, c, point) == true) 
+        std::cout << "The point is INSIDE the triangle.\n";
+    else
+        std::cout << "The point is OUTSIDE the triangle.\n";
+    
+    return 0;
+}

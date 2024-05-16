@@ -107,12 +107,12 @@ Fixed Fixed::operator/(const Fixed &other) const {
 }
 
 // Increment/decrement //
-Fixed &Fixed::operator++() {
+Fixed Fixed::operator++() {
     this->_value++;
     return *this;
 }
 
-Fixed &Fixed::operator--() {
+Fixed Fixed::operator--() {
     this->_value--;
     return *this;
 }

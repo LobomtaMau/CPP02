@@ -1,8 +1,8 @@
 #ifndef FIXED_HPP
 #define FIXED_HPP
 
+// #include "Point.hpp"
 #include <iostream>
-#include <Point.hpp>
 #include <cmath>
 
 class Fixed {
@@ -40,8 +40,8 @@ class Fixed {
         Fixed operator/(const Fixed &other) const;
 
         // +/- operators
-        Fixed &operator++();    //pre
-        Fixed &operator--();
+        Fixed operator++();  ///  //pre
+        Fixed operator--(); ///
         Fixed operator++(int);  //post
         Fixed operator--(int);
 

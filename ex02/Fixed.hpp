@@ -39,8 +39,8 @@ class Fixed {
         Fixed operator/(const Fixed &other) const;
 
         // +/- operators
-        Fixed &operator++();    //pre
-        Fixed &operator--();
+        Fixed operator++();    //pre
+        Fixed operator--();
         Fixed operator++(int);  //post
         Fixed operator--(int);
 

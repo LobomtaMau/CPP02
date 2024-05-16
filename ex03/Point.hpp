@@ -1,7 +1,7 @@
 #ifndef POINT_HPP
 #define POINT_HPP
 
-#include <Fixed.hpp>
+#include "Fixed.hpp"
 
 class Point {
     private:
@@ -10,17 +10,17 @@ class Point {
 
     public:
         Point();
-        Point(const float x_value, const float y_value);
+        Point(const Fixed x_val, const Fixed y_val);
         Point(const Point &other);
-        Point &operator=(const Point &other);
         ~Point();
 
-        Fixed getX() const;
-        Fixed getY() const;
+        Point &operator=(const Point &other);
+
+        const Fixed& getX() const;
+        const Fixed& getY() const;
     
 };
 
-std::ostream &operator << (std::ostream &out, const Point &point);
-
+bool bsp(const Point a, const Point b, const Point c, const Point point);
 
 #endif

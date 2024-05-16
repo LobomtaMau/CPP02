@@ -34,6 +34,8 @@ Fixed &Fixed::operator=(const Fixed &other) {
     }
     return *this;
 }
+// Verify if object being assigned is itself
+// If not, assigns the value to other._value
 
 int Fixed::getRawBits() const {
     std::cout << "getRawBits member function called\n";

@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Fixed.cpp                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: struf <struf@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/02 15:03:59 by struf             #+#    #+#             */
-/*   Updated: 2024/05/02 16:36:26 by struf            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <Fixed.hpp>
 
 const int Fixed::_fractBits = 8;
@@ -43,22 +31,31 @@ void Fixed::setRawBits(int const raw) {
     this->_value = raw;
 }
 
+
 Fixed::Fixed(const int value) : _value(value << _fractBits) {
     std::cout << "Int constructor called\n";
 }
+// init _value with shift left << by _fractBits position
+// convert int to fixed point.
 
 Fixed::Fixed(const float value) : _value(roundf(value * (1 << _fractBits))) {
     std::cout << "Float constructor called\n";
 }
+// (1 << _fractBits) is a bit shift operation that multiplies value by
+// 2^_fractBits, effectively scaling it to the fixed-point representation.
 
 int Fixed::toInt() const {
     return _value >> _fractBits;
 }
+// "Const" at the end, indicates that this function does not modify the state of the object
+// _fractBits righ shitf >> on _value
+// shifts out the fractional part of the fixed-point value, leaving only the integer part
 
 float Fixed::toFloat() const {
     return static_cast<float>(_value) / (1 << _fractBits);
 }
-
+// _value divided by (1 << _fractBits) performs the division operation, effectively 
+// scaling down the fixed-point value to the appropriate floating-point range.
 
 std::ostream &operator<<(std::ostream &out, const Fixed &fixed) {
     out << fixed.toFloat();
